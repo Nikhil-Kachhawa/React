@@ -1,7 +1,7 @@
 import React from 'react'
 import Person from './components/Person'
 import Products from './components/Products';
-
+import Car from './components/Car';
 
 const App = () => {
   const users = [
@@ -21,6 +21,10 @@ const App = () => {
     <h1>App Component</h1>
     <Person name="Alice" age={25}  />
     <Products name="Phone" price="$699"/>
+    <Car>
+      <h2>Car Component</h2>
+      <p>Car Component Content</p>
+    </Car>
     </>
   )
 }
