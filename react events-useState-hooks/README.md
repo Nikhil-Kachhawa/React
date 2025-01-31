@@ -35,3 +35,4 @@ const EventDemo = () => {
   )
 }
 ```
+- whenever you are changing something make sure to use the useState to update the state
