@@ -15,6 +15,7 @@ const EventDemo = () => {
     <div>
         <button onClick={handleClick}> Old Text : {text} </button>
         <p>Changed Text : {text}</p>
+        <hr />
     </div>
   )
 }
