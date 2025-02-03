@@ -2,11 +2,12 @@ import React, {useState} from 'react'
 
 const TodoList = () => {
 
-    const [todolist, setTodolist] = useState([])
+    const [todolist, setTodolist] = useState(["abc",])
 
-    const handleClick = () => {
-        // setTodolist([...todolist])
-        console.log("hey")
+    const handleClick = (event) => {
+        event.preventDefault()
+        setTodolist([...todolist, event.target.value])
+        console.log("hey", event)
     }
 
   return (
@@ -15,15 +16,17 @@ const TodoList = () => {
             <label htmlFor="task_name">Task Name: </label>
             <input type="text" name="task_name" id="task_name"/>
             <button type="submit" onClick = {handleClick}>Add Task</button>
-            <h1>: Tasks :</h1>
-            {
-                todolist.map() = () => {
-                    <ul>
-                        <li key = {Math.random() * 10}>{task}</li>
-                    </ul>
-                }
-            }
-        </form>
+        </form>    
+            
+        <h1>: Tasks :</h1>
+        <ul>
+        {todolist.map(
+            task => (
+                <li key = {Math.floor(Math.random() * 10)} >{task}</li>    
+            )
+        )}
+        </ul>
+
     </div>
   )
 }
