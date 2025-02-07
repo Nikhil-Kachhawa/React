@@ -3,7 +3,7 @@ React Portal :
 - Portal is a feature that allows you to render a child component into a DOM node that exists outside the hierarchy of the parent component.
 - This can be used in the scenarios like modals, tooltips, dropdowns where u want to break out of the usual parent-child structure and render in a different part of the DOM
 - index.html
-
+```
 <!doctype html>
 <html lang="en">
   <head>
@@ -18,9 +18,9 @@ React Portal :
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
-
+```
 - App.jsx
-
+```
 import React, {useState} from 'react'
 import Portals from './components/Portals';
 
@@ -56,8 +56,9 @@ const App = () => {
 }
 
 export default App
-
+```
 - components/Portals.jsx
+```
 import React from "react";
 import { createPortal } from "react-dom";
 
@@ -83,3 +84,4 @@ const styles = {
 };
 
 export default Portals;
+```
