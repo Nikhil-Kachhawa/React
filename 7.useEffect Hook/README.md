@@ -1,8 +1,9 @@
-# React + Vite
+useEffect :
+-------------------------
+- useEffect allows us to perform side effects in components
+- Examples includes fetching data, directly updating the DOM etc
+- Things to keep in mind :
+1. If we don't specify anything as in dependency array then it will execute on every single render
+2. We can't use useEffect hook inside conditional statements
+3. Whenever we specify array dependency as empty array - [ ] then useEffect will get trigger when the component first renders otherwise if we specify some state var inside the array then useEffect will trigger whenever state changes.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
