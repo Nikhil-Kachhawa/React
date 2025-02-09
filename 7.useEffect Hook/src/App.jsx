@@ -1,39 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
+import BasicEffect from './components/BasicEffect'
+import CounterEffect from './components/CounterEffect'
+import FetchDataEffect from './components/FetchDataEffect'
+import FetchSimpleArraydata from './components/FetchSimpleArraydata'
 
 const App = () => {
 
-  const [data, setData] = useState([])
-  useEffect(
-    () => {
-      async function getData () {
-        const response  = await fetch("https://jsonplaceholder.typicode.com/users")
-        const data = await response.json()
-        setData(data)
-        // console.log(data)
-      }
-      getData()  
-    }
-    
-  , [])
-
   return (
     <div>
-
-    <h1>: Random Users of the Day :</h1>
-    <ul>
-      {
-        data.map(
-          (item) => (
-            <div key={item.id}>
-              <h2>Name : {item.name}</h2>
-              <h3>Username : {item.username}</h3>
-              <h3>Email : {item.email}</h3>
-              <br />
-            </div>
-          )
-        )
-      }
-    </ul>  
+      <BasicEffect />
+      <CounterEffect />
+      <FetchDataEffect />
+      <FetchSimpleArraydata />
     </div>
   )
 }
