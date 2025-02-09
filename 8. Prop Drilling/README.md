@@ -1,8 +1,22 @@
-# React + Vite
+- Prop Drilling : 
+------------------
+- If we want to transfer data from parent component to child components then in react there are many ways one of which is prop drilling
+- Just pass the data as prop to child componenets and so on 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```
+import React from 'react'
+import CompA from './components/CompA'
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+const App = () => {
+  const name = "Prop Drilling"
+  return (
+    <div>
+      <h1>: My App :</h1>
+      <CompA name = {name} />
+    </div>
+  )
+}
+
+export default App
+```
