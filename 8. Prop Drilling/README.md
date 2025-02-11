@@ -7,8 +7,8 @@
 import React from 'react'
 import CompA from './components/CompA'
 
-
-const App = () => {
+const App = () =>
+ {
   const name = "Prop Drilling"
   return (
     <div>
