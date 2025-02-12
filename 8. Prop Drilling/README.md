@@ -11,10 +11,12 @@ const App = () =>
  {
   const name = "Prop Drilling"
   return (
+
     <div>
       <h1>: My App :</h1>
       <CompA name = {name} />
     </div>
+    
   )
 }
 
