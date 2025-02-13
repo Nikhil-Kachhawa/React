@@ -1,8 +1,13 @@
 import React from 'react'
+import ComponentA from './components/ComponentA'
+
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <h1> : CONTEXT : </h1>
+      <ComponentA />
+    </div>
   )
 }
 
