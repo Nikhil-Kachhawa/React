@@ -1,12 +1,18 @@
-import React from 'react'
+import React, {createContext} from 'react'
 import ComponentA from './components/ComponentA'
 
+export const Data = createContext()
 
 const App = () => {
+
+  const name = 'John';
+
   return (
     <div>
-      <h1> : CONTEXT : </h1>
-      <ComponentA />
+      <Data.Provider value={name}>
+        <h1> : CREATE CONTEXT : </h1>
+        <ComponentA />
+      </Data.Provider>
     </div>
   )
 }
