@@ -121,3 +121,8 @@ export default App
     export default ComponentC
 ```	
 - As you can see this is not that much convenient way to pass the data so we will look into more options
+
+- useContext Hook :
+----------------------
+- This Hook allows us to access the context values provided by a context object directly within a functional component
+- Context provides a way to pass data through the component tree without having to pass props down manually at every level 
