@@ -126,3 +126,27 @@ export default App
 ----------------------
 - This Hook allows us to access the context values provided by a context object directly within a functional component
 - Context provides a way to pass data through the component tree without having to pass props down manually at every level 
+
+- App.jsx stays same
+
+- ComponentD.jsx
+```
+import React, { useContext } from 'react'
+import { Data, Data1 } from '../App'
+
+const ComponentD = () => {
+
+    const userName = useContext(Data)
+    const Age = useContext(Data1)
+
+  return (
+    <div>
+        <h1>ComponentD</h1>
+        <p>Username: {userName}</p>
+        <p>Age: {Age}</p>
+    </div>
+  )
+}
+
+export default ComponentD
+```
