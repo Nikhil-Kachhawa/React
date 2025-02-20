@@ -120,6 +120,7 @@ export default App
 
     export default ComponentC
 ```	
+
 - As you can see this is not that much convenient way to pass the data so we will look into more options
 
 - useContext Hook :
