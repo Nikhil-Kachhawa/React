@@ -1,12 +1,55 @@
-# React + Vite
+- useReducer Hook : 
+-----------------------
+- This is similar to useState hook but it is designed for more complex state objects or state transitions that involves multiple subvalues 
+- It allows you to manage state in a functional, immutable way.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- General syntax - 
+const [state, dispatch] = useReducer(reducer, initialState)
 
-Currently, two official plugins are available:
+- initialState = starting value for the state when the component first renders 
+- reducer = this is a function that describes how state should change based on actions/conditions. It takes current state and an action/condition as inputs, and returns a new state.
+- state = current state value, which we can use in the component 
+- dispatch = it is a function, which we call to send actions to reducer which then updates the state 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+state = What we are updating
+action = How we are updating
 
-## Expanding the ESLint configuration
+- App.jsx
+```
+import React, { useReducer } from 'react';
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+const initialState = {counter : 0}
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'increment':
+      return{...state, counter : state.counter + 1};
+    
+    case 'decrement':
+      return{...state, counter : state.counter-1};
+    
+    case 'reset':
+      return{...state, counter : 0};
+
+    default:
+      break;
+  }
+}
+
+const App = () => {
+
+  const [state, dispatch] = useReducer(reducer, initialState )
+
+  return (
+    <div>
+      <h1>Counter App using useReducer Hook</h1>
+      <h1>Current Count : {state.counter}</h1>
+        <button onClick = {() => dispatch({type: 'increment'})} > + </button>
+        <button onClick = {() => dispatch({type: 'decrement'})} > - </button>
+        <button onClick = {() => dispatch({type: 'reset'})} > Reset </button>
+    </div>
+  )
+}
+
+export default App
+```
