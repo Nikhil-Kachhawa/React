@@ -4,6 +4,7 @@
 - It allows you to manage state in a functional, immutable way.
 
 - General syntax - 
+
 const [state, dispatch] = useReducer(reducer, initialState)
 
 - initialState = starting value for the state when the component first renders 
