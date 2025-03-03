@@ -1,12 +1,30 @@
-# React + Vite
+- useRef :
+------------
+- useRef hook provides a way to access and interact with DOM elements or to persist values across renders without causing a re-render 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- App.jsx
 
-Currently, two official plugins are available:
+import React, { useRef } from 'react'
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+const App = () => {
 
-## Expanding the ESLint configuration
+  const element = useRef(null);
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  const handleClick = () => {
+    console.log(element);
+    element.current.value = "RKO";
+  } 
+
+  return (
+    <div>
+      <h1>: useRef :</h1>
+
+      <input type="text" ref={element}/>
+      <button onClick={handleClick}>Add "RKO" text</button>
+
+    </div>
+  )
+}
+
+export default App
+
