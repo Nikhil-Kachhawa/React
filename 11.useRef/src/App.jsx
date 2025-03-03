@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import Timer from './components/Timer';
 
 const App = () => {
 
@@ -15,6 +16,8 @@ const App = () => {
 
       <input type="text" ref={element}/>
       <button onClick={handleClick}>Add "RKO" text</button>
+
+      <Timer />
 
     </div>
   )
