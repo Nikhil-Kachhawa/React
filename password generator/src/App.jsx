@@ -8,24 +8,31 @@ const App = () => {
   const [pwd, setPwd] = useState('')
 
   const password = useCallback( () => {
-    let text = ""
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-    const possible2 = "0123456789"
-    const possible3 = "!@#$%^&*()_+"
+    let pass = ""
+    let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+    const possible1 = "0123456789"
+    const possible2 = "!@#$%^&*()_+"
 
-    
-  }
-  , [rangeValue, charAllowed, numAllowed, setPwd])
+    if(charAllowed) text += possible1
+    if(numAllowed) text += possible2
+
+    for(let i=1; i<=rangeValue; i++){
+      pass += text.charAt(Math.floor(Math.random() * 1))
+    }
+
+    setRangeValue(pass)
+
+  }, [rangeValue, charAllowed, numAllowed, setPwd])
 
   const handleClick = () => {
     console.log("ads");
   }
 
-  const handleRangeChange = (e) => {
-    setRangeValue(e.target.value)
-    setPwd(pwd+text)
+  // const handleRangeChange = (e) => {
+  //   setRangeValue(e.target.value)
+  //   setPwd(pwd)
     
-  }
+  // }
 
   return (
     // <div className = "flex w-screen h-screen border-4 justify-center border-indigo-500">
@@ -34,7 +41,7 @@ const App = () => {
         
         <input type="text" name="pwd" id="pwd" 
           className="bg-green-100 text-black font-bold" 
-          value={pwd}
+          value={password}
         />
         
         <button 
@@ -48,7 +55,7 @@ const App = () => {
           <input type="range" name="range4to24" id="range4to24" 
             min="4" 
             max="24" 
-            onChange={handleRangeChange} 
+            // onChange={handleRangeChange} 
             value={rangeValue} 
           />
           {rangeValue}
