@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 
 const App = () => {
 
@@ -13,59 +13,60 @@ const App = () => {
     const possible1 = "0123456789"
     const possible2 = "!@#$%^&*()_+"
 
-    if(charAllowed) text += possible1
-    if(numAllowed) text += possible2
+    if (numAllowed) text += possible1;
+    if (charAllowed) text += possible2;
 
     for(let i=1; i<=rangeValue; i++){
-      pass += text.charAt(Math.floor(Math.random() * 1))
+      pass += text.charAt(Math.floor(Math.random() * text.length));
     }
 
-    setRangeValue(pass)
+    setPwd(pass)
 
   }, [rangeValue, charAllowed, numAllowed, setPwd])
 
-  const handleClick = () => {
-    console.log("ads");
-  }
+  useEffect(()=> {
+    password()
+  } , [rangeValue, charAllowed, numAllowed, password])
 
-  // const handleRangeChange = (e) => {
-  //   setRangeValue(e.target.value)
-  //   setPwd(pwd)
-    
-  // }
-
+  const handleClick = useCallback(()=> {
+      window.navigator.clipboard.writeText(pwd)
+      alert("Password Copied Successfully")
+    }, [pwd])
   return (
-    // <div className = "flex w-screen h-screen border-4 justify-center border-indigo-500">
-    <div className = "border-indigo-500">
-        <h1 className="text-4xl border mt-4">: Password Generator :</h1>
-        
+    <div className = "w-screen h-screen border-4 border-indigo-500">
+        <h1 className="text-4xl text-center m-4 p-4">: Password Generator :</h1>
+
+      <div className="flex flex-col items-center justify-center m-2 p-2 ">
         <input type="text" name="pwd" id="pwd" 
-          className="bg-green-100 text-black font-bold" 
-          value={password}
+          className="bg-green-100 text-black font-bold w-100 m-2" 
+          value={pwd}
+          readOnly
         />
         
         <button 
-          className="bg-indigo-500 hover:bg-green-700 text-white font-bold" 
+          className="bg-indigo-500 hover:bg-green-700 text-white font-bold m-2 p-2 cursor-pointer rounded" 
           onClick={handleClick}
         > Copy ! </button>
         
         <br />
 
         <label htmlFor="range1to100">
-          <input type="range" name="range4to24" id="range4to24" 
+          <input 
+            type="range" 
             min="4" 
             max="24" 
-            // onChange={handleRangeChange} 
-            value={rangeValue} 
+            onChange={(e) => setRangeValue(e.target.value)} 
           />
-          {rangeValue}
+          Length : {rangeValue}
         </label>
 
         <br />
 
         <label htmlFor="charAllowed">
-          <input type="checkbox" name="charAllowed" id="charAllowed"
-            onClick={() => pass}
+          <input 
+            type="checkbox"
+            defaultChecked={charAllowed}
+            onClick={() => setCharAllowed((prev) => !prev)}
           />
           Characters Allowed ? 
         </label>
@@ -73,12 +74,13 @@ const App = () => {
         <br />
 
         <label htmlFor="numAllowed">
-          <input type="checkbox" name="numAllowed" id="numAllowed" 
-            onClick={() => pass}
+          <input type="checkbox"  
+            defaultChecked={numAllowed}
+            onClick={() => setNumAllowed((prev) => !prev)}
           />
           Numbers Allowed ? 
         </label>
-    
+      </div>
     </div>
   )
 }
